@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokendra Shahi — Social Media Manager</title>
+<meta name="description" content="Lokendra Shahi, Social Media Manager. Hands-on experience managing Instagram, Facebook and YouTube pages across football, boxing and travel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbfaf7;
+    --white:#ffffff;
+    --paper:#f5f4f0;
+    --line:#e6e3db;
+    --ink:#15171c;
+    --ink-soft:#5c5f68;
+    --ink-faint:#93959e;
+    --navy:#1a3b6d;
+    --navy-deep:#0f2748;
+    --navy-tint:#eaf0fa;
+    --gold:#a9812f;
+    --gold-tint:#f7f1e1;
+    --r-lg:22px;
+    --r-md:14px;
+    --shadow-sm: 0 1px 2px rgba(15,17,23,0.05);
+    --shadow-md: 0 10px 28px rgba(15,17,23,0.09);
+    --shadow-lg: 0 30px 70px rgba(15,39,72,0.18);
+    --maxw: 1220px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  h1,h2,h3,h4{font-family:'Manrope', sans-serif; margin:0; letter-spacing:-0.015em; color:var(--ink);}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  ul{margin:0; padding:0; list-style:none;}
+  button{font-family:inherit; cursor:pointer; background:none; border:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
+  @media (max-width:640px){ .wrap{padding:0 22px;} }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--navy); font-weight:700;
+  }
+  .num-label{
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.1em; color:var(--ink-faint); font-weight:700;
+  }
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} *{scroll-behavior:auto !important;} }
+
+  /* ================= NAV — floating pill ================= */
+  .nav-float-wrap{position:sticky; top:20px; z-index:200; display:flex; justify-content:center; pointer-events:none;}
+  .nav-pill{
+    pointer-events:auto;
+    max-width:var(--maxw); width:calc(100% - 40px);
+    margin:0 20px;
+    background:rgba(255,255,255,0.82); backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border:1px solid var(--line); border-radius:999px; box-shadow:var(--shadow-sm);
+    display:flex; align-items:center; justify-content:space-between; padding:12px 10px 12px 24px;
+  }
+  .brand{font-family:'Manrope'; font-weight:800; font-size:14.5px; letter-spacing:0.02em;}
+  .brand span{color:var(--navy);}
+  nav.main-links{display:flex; gap:8px;}
+  nav.main-links a{
+    font-size:13.5px; font-weight:600; color:var(--ink-soft); padding:9px 16px; border-radius:999px;
+    transition:color .18s ease, background .18s ease;
+  }
+  nav.main-links a:hover{color:var(--ink); background:var(--paper);}
+  .hamburger{
+    display:none; width:38px; height:38px; border-radius:999px; border:1px solid var(--line);
+    background:var(--white); align-items:center; justify-content:center;
+  }
+  .hamburger span{display:block; width:16px; height:2px; background:var(--ink); position:relative;}
+  .hamburger span::before, .hamburger span::after{content:''; position:absolute; width:16px; height:2px; background:var(--ink); left:0;}
+  .hamburger span::before{top:-5px;} .hamburger span::after{top:5px;}
+
+  .mobile-menu{
+    display:none; position:fixed; inset:0; background:var(--cream); z-index:250; padding:28px 26px; overflow-y:auto;
+  }
+  .mobile-menu.open{display:block;}
+  .mm-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;}
+  .mm-close{width:38px; height:38px; border-radius:999px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; background:var(--white);}
+  .mobile-menu a{display:block; padding:18px 0; font-family:'Manrope'; font-size:26px; font-weight:800; border-bottom:1px solid var(--line);}
+
+  @media (max-width:880px){
+    nav.main-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-pill{padding:10px 10px 10px 20px;}
+  }
+
+  /* ================= HERO — editorial split ================= */
+  .hero{padding:64px 0 40px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;}
+  @media (max-width:980px){ .hero-grid{grid-template-columns:1fr; gap:52px;} }
+
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 66px); font-weight:800; line-height:1.02; margin:20px 0 26px; max-width:640px;
+  }
+  .hero p.lead{font-size:17.5px; color:var(--ink-soft); max-width:460px; margin-bottom:30px;}
+  .hero-links{display:flex; flex-direction:column; gap:2px; max-width:340px;}
+  .hero-link-row{
+    display:flex; align-items:center; justify-content:space-between; padding:20px 4px;
+    border-top:1px solid var(--line); font-weight:700; font-size:15px; transition:padding-left .2s ease, color .2s ease;
+  }
+  .hero-link-row:last-child{border-bottom:1px solid var(--line);}
+  .hero-link-row svg{width:16px; height:16px; transition:transform .2s ease;}
+  .hero-link-row:hover{padding-left:10px; color:var(--navy);}
+  .hero-link-row:hover svg{transform:translateX(4px);}
+  .hero-link-row.primary{color:var(--navy-deep);}
+
+  .hero-visual{position:relative; height:520px;}
+  @media (max-width:980px){ .hero-visual{height:420px;} }
+  @media (max-width:480px){ .hero-visual{height:340px;} }
+  .hv-main{
+    position:absolute; top:0; right:0; width:78%; height:80%; border-radius:var(--r-lg);
+    background:linear-gradient(160deg,#eef2f8,#d9e3f1); overflow:hidden; box-shadow:var(--shadow-lg);
+    display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.5);
+  }
+  .hv-main img{width:100%; height:100%; object-fit:cover;}
+  .hv-sub{
+    position:absolute; bottom:-6%; left:0; width:46%; aspect-ratio:3/4; border-radius:var(--r-md);
+    background:linear-gradient(160deg,#f4efe0,#e6d9b8); box-shadow:var(--shadow-md); border:5px solid var(--cream);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .hv-sub img{width:100%; height:100%; object-fit:cover;}
+  .hv-tag-float{
+    position:absolute; top:22px; left:22px; background:rgba(255,255,255,0.92); padding:8px 14px; border-radius:999px;
+    font-family:'Space Mono'; font-size:11px; font-weight:700; letter-spacing:0.06em; color:var(--navy-deep);
+    box-shadow:var(--shadow-sm);
+  }
+  .hv-result-float{
+    position:absolute; bottom:18px; right:18px; background:var(--navy-deep); color:var(--white); padding:14px 18px;
+    border-radius:14px; box-shadow:var(--shadow-md);
+  }
+  .hv-result-float .n{font-family:'Manrope'; font-weight:800; font-size:20px; line-height:1;}
+  .hv-result-float .l{font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.7; margin-top:4px;}
+
+  /* ================= EXPERIENCE STRIP — editorial typography ================= */
+  .exp-strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:34px 0;}
+  .exp-row{display:flex; flex-wrap:wrap; align-items:baseline; gap:0;}
+  .exp-item{flex:1 1 200px; padding:8px 28px; position:relative;}
+  .exp-item:not(:first-child)::before{
+    content:''; position:absolute; left:0; top:10%; bottom:10%; width:1px; background:var(--line);
+  }
+  .exp-item .n{font-family:'Manrope'; font-weight:800; font-size:clamp(30px,4vw,44px); color:var(--navy-deep); line-height:1;}
+  .exp-item .l{font-size:12.5px; color:var(--ink-soft); font-weight:600; margin-top:8px;}
+  .exp-note{font-size:12px; color:var(--ink-faint); margin-top:18px; text-align:right;}
+  @media (max-width:760px){
+    .exp-item{flex:1 1 42%;}
+    .exp-item:nth-child(odd)::before{display:none;}
+    .exp-note{text-align:left;}
+  }
+
+  /* ================= SECTION HEADS ================= */
+  .section{padding:100px 0;}
+  .section.tight{padding:70px 0;}
+  .archive-label{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .archive-label .line{width:36px; height:1px; background:var(--navy);}
+  .section-head{display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; margin-bottom:52px;}
+  @media (max-width:760px){ .section-head{grid-template-columns:1fr;} }
+  .section-head h2{font-size:clamp(30px,4.2vw,46px); line-height:1.04;}
+  .section-head .sub{color:var(--ink-soft); font-size:15.5px; max-width:340px;}
+
+  /* ================= FILTERS ================= */
+  .filters{display:flex; gap:10px; margin-bottom:40px; flex-wrap:wrap;}
+  .filter-btn{
+    padding:9px 18px; border-radius:999px; border:1px solid var(--line); background:var(--white);
+    font-size:12.5px; font-weight:700; letter-spacing:0.02em; color:var(--ink-soft); transition:all .18s ease;
+  }
+  .filter-btn:hover{border-color:var(--navy);}
+  .filter-btn.active{background:var(--navy-deep); color:var(--white); border-color:var(--navy-deep);}
+
+  /* ================= WORK GRID ================= */
+  .work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
+  @media (max-width:980px){ .work-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .work-grid{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden;
+    display:flex; flex-direction:column; height:100%;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:var(--shadow-md); border-color:#d7d2c2;}
+  .card-media{
+    aspect-ratio:16/11; position:relative; overflow:hidden;
+    background:linear-gradient(160deg,var(--paper),#e9e5da);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card-media img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .card:hover .card-media img{transform:scale(1.05);}
+  .stamp{
+    position:absolute; top:12px; left:12px; font-family:'Space Mono'; font-size:10px; letter-spacing:0.08em;
+    font-weight:700; padding:5px 10px; border-radius:999px; text-transform:uppercase;
+    background:rgba(255,255,255,0.92); color:var(--navy-deep); border:1px solid rgba(23,58,104,0.18);
+  }
+  .card-body{padding:22px 22px 24px; display:flex; flex-direction:column; gap:9px; flex:1;}
+  .card-tag{font-family:'Space Mono'; font-size:10.5px; letter-spacing:0.08em; font-weight:700; color:var(--navy); text-transform:uppercase;}
+  .card-title{font-size:20px; font-weight:800;}
+  .card-result{font-size:13.5px; font-weight:700; color:var(--gold);}
+  .card-desc{font-size:13.5px; color:var(--ink-soft); flex:1;}
+  .card-footer{margin-top:8px; padding-top:16px; border-top:1px solid var(--line);}
+  .view-case{
+    font-size:12.5px; font-weight:800; letter-spacing:0.03em; color:var(--navy-deep);
+    display:inline-flex; align-items:center; gap:6px; padding:2px 0;
+  }
+  .view-case svg{width:14px; height:14px; transition:transform .18s ease;}
+  .view-case:hover svg{transform:translateX(3px);}
+
+  /* ================= EXPERIENCE TIMELINE ================= */
+  .timeline{display:flex; flex-direction:column;}
+  .tl-row{display:grid; grid-template-columns:170px 1fr; gap:30px; padding:30px 0; border-top:1px solid var(--line);}
+  .tl-row:last-child{border-bottom:1px solid var(--line);}
+  .tl-year{font-family:'Space Mono'; font-weight:700; color:var(--navy); font-size:14px; padding-top:2px;}
+  .tl-body h4{font-size:18px; margin-bottom:8px;}
+  .tl-body p{font-size:14.5px; color:var(--ink-soft); max-width:560px;}
+  @media (max-width:600px){ .tl-row{grid-template-columns:1fr; gap:6px;} }
+
+  /* ================= WHAT I CAN DO ================= */
+  .can-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden;}
+  @media (max-width:980px){ .can-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .can-grid{grid-template-columns:1fr;} }
+  .can-card{background:var(--white); padding:30px 24px;}
+  .can-card .num-label{margin-bottom:16px; display:block;}
+  .can-card h3{font-size:16.5px; margin-bottom:10px;}
+  .can-card p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* ================= SKILLS ================= */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:900px){ .skills-grid{grid-template-columns:1fr; gap:36px;} }
+  .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+  .pill{font-size:13px; font-weight:600; padding:9px 15px; border-radius:8px; background:var(--white); border:1px solid var(--line); color:var(--ink);}
+  .pill.muted{background:var(--gold-tint); border-color:#ecdfb9; color:var(--gold);}
+  .platform-list{display:flex; flex-direction:column; gap:12px; margin-top:16px;}
+  .platform-row{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--white);}
+  .platform-row .p-name{font-weight:700; font-size:15px;}
+  .platform-row .p-meta{font-size:12.5px; color:var(--ink-faint);}
+
+  /* ================= ABOUT — editorial split ================= */
+  .about-grid{display:grid; grid-template-columns:0.7fr 1.3fr; gap:60px;}
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr; gap:30px;} }
+  .about-grid h2{font-size:clamp(30px,4.2vw,44px); position:sticky; top:110px;}
+  .about-copy p{font-size:16px; color:var(--ink-soft); margin-bottom:18px; max-width:620px;}
+  .about-meta{display:flex; gap:30px; margin-top:36px; flex-wrap:wrap;}
+  .about-meta-item .eyebrow{display:block; margin-bottom:8px;}
+  .about-meta-item p{font-size:14.5px; font-weight:600; color:var(--ink);}
+
+  /* ================= CONTACT — big CTA ================= */
+  .contact-cta{
+    background:var(--navy-deep); border-radius:28px; padding:64px 48px; color:var(--white); position:relative; overflow:hidden;
+  }
+  .contact-cta::before{
+    content:''; position:absolute; top:-30%; right:-10%; width:60%; height:160%;
+    background:radial-gradient(circle, rgba(255,255,255,0.06), transparent 65%);
+  }
+  @media (max-width:640px){ .contact-cta{padding:44px 26px; border-radius:20px;} }
+  .contact-cta h2{font-size:clamp(30px,4.8vw,50px); color:var(--white); max-width:680px; line-height:1.06;}
+  .contact-cta .lead{font-size:16px; color:rgba(255,255,255,0.72); max-width:520px; margin-top:18px;}
+  .contact-details{display:flex; gap:48px; flex-wrap:wrap; margin-top:44px; position:relative;}
+  .contact-details .eyebrow{color:rgba(255,255,255,0.55); display:block; margin-bottom:8px;}
+  .contact-details .val{font-size:16px; font-weight:700; color:var(--white);}
+  .contact-details a.val:hover{color:var(--navy-tint);}
+  .get-in-touch{
+    display:inline-flex; align-items:center; gap:10px; margin-top:40px; background:var(--white); color:var(--navy-deep);
+    padding:16px 28px; border-radius:999px; font-weight:800; font-size:14.5px; transition:transform .2s ease, box-shadow .2s ease;
+    position:relative;
+  }
+  .get-in-touch:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,0.25);}
+  .get-in-touch svg{width:15px; height:15px;}
+
+  /* ================= FOOTER ================= */
+  footer{padding:40px 0 50px;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--line); padding-top:32px;}
+  .footer-inner .f-brand{font-weight:800; font-family:'Manrope';}
+  .footer-inner .f-role{font-size:13px; color:var(--ink-soft);}
+  .footer-inner .f-meta{font-size:12.5px; color:var(--ink-faint); text-align:right;}
+
+  /* ================= MODAL ================= */
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(15,17,23,0.4); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:500; padding:24px;
+  }
+  .modal-backdrop.open{display:flex;}
+  .modal{
+    background:var(--white); border-radius:var(--r-lg); width:min(880px,70vw); max-height:82vh; overflow-y:auto;
+    box-shadow:var(--shadow-lg); position:relative; animation:modalIn .22s ease;
+  }
+  @keyframes modalIn{from{opacity:0; transform:translateY(10px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
+  @media (max-width:980px){ .modal{width:88vw;} }
+  @media (max-width:640px){ .modal{width:92vw; max-height:88vh;} }
+
+  .modal-close{
+    position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%;
+    background:var(--white); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; z-index:5;
+    transition:background .18s ease;
+  }
+  .modal-close:hover{background:var(--paper);}
+  .modal-inner{display:grid; grid-template-columns:33% 67%;}
+  @media (max-width:640px){ .modal-inner{grid-template-columns:1fr;} }
+
+  .modal-media{padding:28px 22px; background:var(--paper); display:flex; flex-direction:column; align-items:center; gap:14px; border-right:1px solid var(--line);}
+  @media (max-width:640px){ .modal-media{border-right:none; border-bottom:1px solid var(--line);} }
+  .modal-shot{
+    width:100%; max-width:200px; border-radius:12px; border:1px solid var(--line); overflow:hidden;
+    box-shadow:var(--shadow-sm); background:var(--white); cursor:zoom-in; aspect-ratio:9/16;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .modal-shot img{width:100%; height:100%; object-fit:cover;}
+  .modal-status{
+    font-family:'Space Mono'; font-size:10.5px; letter-spacing:0.06em; font-weight:700; text-transform:uppercase;
+    padding:6px 12px; border-radius:999px; background:var(--navy-tint); color:var(--navy-deep);
+  }
+  .modal-live{margin-top:2px; font-size:13px; font-weight:800; color:var(--navy-deep); display:inline-flex; align-items:center; gap:6px;}
+  .modal-live svg{width:13px; height:13px;}
+  .modal-info{padding:32px 34px;}
+  @media (max-width:640px){ .modal-info{padding:24px 22px;} }
+  .modal-info .card-tag{margin-bottom:8px; display:block;}
+  .modal-info h3{font-size:25px; margin-bottom:8px;}
+  .modal-result{font-size:14px; font-weight:800; color:var(--gold); margin-bottom:22px;}
+  .modal-section{margin-bottom:22px;}
+  .modal-section h5{font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); font-weight:800; margin-bottom:8px;}
+  .modal-section p{font-size:14px; color:var(--ink-soft); line-height:1.65;}
+  .modal-section ul{display:flex; flex-wrap:wrap; gap:8px;}
+  .modal-section ul li{font-size:12.5px; font-weight:600; background:var(--paper); border:1px solid var(--line); padding:6px 12px; border-radius:7px; color:var(--ink);}
+  .modal-note{font-size:12.5px; color:var(--ink-faint); font-style:italic; margin-top:6px;}
+  .proof-grid{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;}
+  .proof-thumb{
+    width:62px; height:62px; border-radius:8px; border:1px solid var(--line); background:var(--white);
+    display:flex; align-items:center; justify-content:center; cursor:zoom-in; overflow:hidden; transition:border-color .18s ease;
+  }
+  .proof-thumb:hover{border-color:var(--navy);}
+  .proof-thumb img{width:100%; height:100%; object-fit:cover;}
+
+  /* Lightbox */
+  .lightbox{position:fixed; inset:0; background:rgba(10,12,18,0.84); display:none; align-items:center; justify-content:center; z-index:600; padding:30px;}
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:min(520px,90vw); max-height:86vh; background:var(--white); border-radius:16px; padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .lightbox-inner img{max-width:100%; max-height:76vh; border-radius:10px; object-fit:contain;}
+  .lightbox-close{position:fixed; top:24px; right:28px; width:40px; height:40px; border-radius:50%; background:var(--white); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="nav-float-wrap">
+  <div class="nav-pill">
+    <div class="brand">LOKENDRA <span>SHAHI</span></div>
+    <nav class="main-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-top">
+    <div class="brand">LOKENDRA <span>SHAHI</span></div>
+    <button class="mm-close" id="mmCloseBtn" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="#15171c" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <span class="eyebrow">Social Media Manager</span>
+      <h1>I manage social media with real hands-on experience.</h1>
+      <p class="lead">2+ years of experience managing, growing, and operating social media pages across Instagram, Facebook, and YouTube.</p>
+      <div class="hero-links">
+        <a href="#work" class="hero-link-row primary">VIEW MY WORK <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#" class="hero-link-row" id="resumeBtnHero">DOWNLOAD RESUME <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hv-main">
+        <span class="hv-tag-float">INSTAGRAM · FOOTBALL</span>
+        <img src="images/xtra.png" alt="Instagram account screenshot">
+        <div class="hv-result-float"><div class="n">24K</div><div class="l">At Sale</div></div>
+      </div>
+      <div class="hv-sub">
+        <img src="images/hit.png" alt="Social media account screenshot">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE STRIP ============ -->
+<section class="exp-strip">
+  <div class="wrap">
+    <div class="exp-row">
+      <div class="exp-item reveal in"><div class="n">2+</div><div class="l">Years Experience</div></div>
+      <div class="exp-item reveal in"><div class="n">7+</div><div class="l">Projects Managed</div></div>
+      <div class="exp-item reveal in"><div class="n">3</div><div class="l">Platforms</div></div>
+      <div class="exp-item reveal in"><div class="n">45K</div><div class="l">Peak Individual Audience</div></div>
+    </div>
+    <p class="exp-note">Audience figures represent current or historical project results.</p>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="archive-label reveal"><span class="line"></span><span class="eyebrow muted num-label">01 / WORK ARCHIVE</span></div>
+    <div class="section-head reveal">
+      <h2>Selected work</h2>
+      <p class="sub">A selection of social media pages I have managed across different platforms and niches.</p>
+    </div>
+
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="instagram">Instagram</button>
+      <button class="filter-btn" data-filter="facebook">Facebook</button>
+      <button class="filter-btn" data-filter="youtube">YouTube</button>
+    </div>
+
+    <div class="work-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE TIMELINE ============ -->
+<section class="section tight" id="experience">
+  <div class="wrap">
+    <div class="archive-label reveal"><span class="line"></span><span class="eyebrow muted num-label">02 / EXPERIENCE</span></div>
+    <div class="section-head reveal">
+      <h2>The journey so far</h2>
+      <p class="sub">How the experience built up, project by project.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-row reveal">
+        <div class="tl-year">2024</div>
+        <div class="tl-body"><h4>Started social media page management</h4><p>Began building and managing Instagram pages, primarily within the football niche.</p></div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-year">2024–2025</div>
+        <div class="tl-body"><h4>Multiple Instagram projects</h4><p>Managed several Real Madrid-focused pages and developed practical experience in content publishing, editing, audience growth, and page operations.</p></div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-year">2025</div>
+        <div class="tl-body"><h4>Expanded across niches</h4><p>Worked with travel and boxing-focused pages.</p></div>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-year">2025–Present</div>
+        <div class="tl-body"><h4>Facebook + YouTube</h4><p>Expanded into Facebook and YouTube while continuing football-focused social media work.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT I CAN DO ============ -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="archive-label reveal"><span class="line"></span><span class="eyebrow muted num-label">03 / CAPABILITIES</span></div>
+    <div class="section-head reveal">
+      <h2>What I can do</h2>
+      <p class="sub">Practical skills, not strategy buzzwords.</p>
+    </div>
+    <div class="can-grid">
+      <div class="can-card reveal in"><span class="num-label">01</span><h3>Social Media Management</h3><p>Managing daily page activity, publishing, and content operations.</p></div>
+      <div class="can-card reveal in"><span class="num-label">02</span><h3>Content Operations</h3><p>Finding topics, preparing content, editing, and publishing.</p></div>
+      <div class="can-card reveal in"><span class="num-label">03</span><h3>Audience Management</h3><p>Maintaining engagement and understanding what content audiences respond to.</p></div>
+      <div class="can-card reveal in"><span class="num-label">04</span><h3>Platform Management</h3><p>Practical experience with Instagram, Facebook, and YouTube.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="archive-label reveal"><span class="line"></span><span class="eyebrow muted num-label">04 / SKILLS</span></div>
+    <div class="section-head reveal">
+      <h2>What I actually work with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="reveal">
+        <span class="eyebrow">Core Skills</span>
+        <div class="pill-row">
+          <span class="pill">Social Media Management</span>
+          <span class="pill">Content Operations</span>
+          <span class="pill">Instagram</span>
+          <span class="pill">Facebook</span>
+          <span class="pill">YouTube</span>
+          <span class="pill">Content Editing</span>
+          <span class="pill">Caption Writing</span>
+          <span class="pill">Audience Engagement</span>
+          <span class="pill">Trend Monitoring</span>
+        </div>
+        <div class="pill-row">
+          <span class="pill muted">Photoshop </span>
+          <span class="pill muted">Graphic Design </span>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Platforms Worked On</span>
+        <div class="platform-list">
+          <div class="platform-row"><span class="p-name">Instagram</span><span class="p-meta">5 projects · Football &amp; Travel</span></div>
+          <div class="platform-row"><span class="p-name">Facebook</span><span class="p-meta">1 project · Football</span></div>
+          <div class="platform-row"><span class="p-name">YouTube</span><span class="p-meta">1 project · Football</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="archive-label reveal"><span class="line"></span><span class="eyebrow muted num-label">05 / ABOUT</span></div>
+    <div class="about-grid">
+      <h2 class="reveal">About me</h2>
+      <div class="about-copy reveal">
+        <p>I'm Lokendra Shahi, a Social Media Manager with 2+ years of hands-on experience managing social media pages.</p>
+        <p>I started primarily with Instagram, where I managed multiple Real Madrid-focused pages and developed practical experience in content research, editing, publishing, audience engagement, and audience growth.</p>
+        <p>Over time, I expanded into travel and boxing while also gaining experience managing Facebook and YouTube.</p>
+        <p>Most of my experience has come from actually running pages, maintaining consistent publishing, learning from audience response, and adapting to different platforms and audiences.</p>
+        <p>I am now looking to bring that practical experience into a professional company environment.</p>
+        <div class="about-meta">
+          <div class="about-meta-item"><span class="eyebrow">Education</span><p>Bachelor of Business Studies (BBS) — Currently Pursuing</p></div>
+          <div class="about-meta-item"><span class="eyebrow">Niches</span><p>Football / Real Madrid, Boxing, Travel</p></div>
+          <div class="about-meta-item"><span class="eyebrow">Location</span><p>Nepal</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section tight" id="contact">
+  <div class="wrap">
+    <div class="contact-cta reveal">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.6);">Let's Connect</span>
+      <h2>Have a social media role in mind?</h2>
+      <p class="lead">I'm currently open to Social Media Manager, Social Media Executive, Social Media Specialist, Content Manager, and related opportunities.</p>
+      <div class="contact-details">
+        <div><span class="eyebrow">Email</span><a href="mailto:hello@lokendrashahi.com" class="val">lokendrashahi238@gmail.com</a></div>
+        <div><span class="eyebrow">Phone</span><a href="tel:+977XXXXXXXX" class="val">+977 9763234775</a></div>
+        <div><span class="eyebrow">Location</span><span class="val">Nepal</span></div>
+      </div>
+      <a href="mailto:hello@lokendrashahi.com" class="get-in-touch">GET IN TOUCH <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="#" class="hero-link-row" id="resumeBtnContact" style="display:inline-flex; border:none; justify-content:center; gap:10px;">DOWNLOAD RESUME
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="f-brand">LOKENDRA SHAHI</div>
+      <div class="f-role">Social Media Manager</div>
+    </div>
+    <div class="f-meta">lokendrashahi238@gmail.com · +977 9763234775 · Nepal<br>© 2026 Lokendra Shahi</div>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M6 6L18 18M18 6L6 18" stroke="#15171c" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-inner" id="modalInner"></div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxCloseBtn" aria-label="Close preview">
+    <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M6 6L18 18M18 6L6 18" stroke="#15171c" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
+
+<script>
+/* ---------------- ICONS ---------------- */
+const ICONS = {
+  instagram: `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>`,
+  facebook: `<svg viewBox="0 0 24 24" fill="none"><path d="M15 4h-2.2C10.7 4 9 5.7 9 7.8V10H7v3h2v7h3v-7h2.3l.5-3H12V8.1c0-.7.4-1.1 1.1-1.1H15V4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
+  youtube: `<svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="6" width="19" height="12" rx="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 9.5L15 12L10.5 14.5V9.5Z" fill="currentColor"/></svg>`,
+  camera: `<svg viewBox="0 0 24 24" fill="none"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="14" r="3.3" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  plane: `<svg viewBox="0 0 24 24" fill="none"><path d="M2 14l20-8-8 20-2.5-8L2 14z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
+  external: `<svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  arrow: `<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+};
+/* ---------------- DATA ---------------- */
+const PROJECTS = [
+  { id:"madridistaxtra", platform:"instagram", platformLabel:"Instagram", niche:"Football", name:"MadridistaXtra", result:"24K at sale",
+    desc:"Real Madrid-focused Instagram page — content research, editing and publishing.", status:"Sold Project",
+    experience:"I managed this Real Madrid-focused Instagram page as part of my experience building and operating football media pages. I handled the day-to-day content process, including finding relevant Real Madrid news, preparing content, editing posts and Reels, writing captions, and maintaining consistent publishing.",
+    responsibilities:["News research","Content selection","Post editing","Reel editing","Caption writing","Hashtag use","Publishing","Audience engagement","Monitoring content performance"],
+    resultDetail:"24K followers at the time of sale.",
+    note:"After the page was sold, I continued working on the same account for approximately one month as paid support for the new owner.",
+    live:"https://www.instagram.com/madridistaxtra/", icon:"instagram",
+    image:"images/xtra.png",
+    proof:["images/xtra work.png","images/xtra work1.png","images/xtra work2.png"] },
+  { id:"madridistasmagic", platform:"instagram", platformLabel:"Instagram", niche:"Football", name:"MadridistasMagic", result:"~45K at sale",
+    desc:"Another Real Madrid-focused Instagram page built through consistent football content.", status:"Historical Project",
+    experience:"I managed another Real Madrid-focused Instagram page, gaining further hands-on experience with football content, regular publishing, editing, and audience-focused content decisions.",
+    responsibilities:["Content research","Editing","Publishing","Captions","Hashtags","Engagement","Content monitoring"],
+    resultDetail:"Approximately 45K followers at sale.",
+    note:"This page is no longer publicly accessible — historical project.", live:null, icon:"instagram",
+    image:"images/sold.png",
+    proof:["images/sold.png","images/sold.png","images/sold.png"] },
+  { id:"realmadridmedia", platform:"instagram", platformLabel:"Instagram", niche:"Football", name:"MagicaMadrid ", result:"~20K at sale",
+    desc:"A Real Madrid-focused Instagram project publishing consistently for a football audience.", status:"Historical Project",
+    experience:"Another Real Madrid-focused Instagram project where I worked on regular content operations, publishing, editing, and maintaining engagement with a football-focused audience.",
+    responsibilities:["Content research","Editing","Publishing","Captions","Hashtags","Engagement","Content management"],
+    resultDetail:"Approximately 20K followers at sale.",
+    note:"This page is no longer publicly accessible — historical project.", live:null, icon:"instagram",
+    image:"images/sold.png",
+    proof:["images/sold.png","images/sold.png","images/sold.png"] },
+  { id:"exploreglam", platform:"instagram", platformLabel:"Instagram", niche:"Travel", name:"ExploreGlam", result:"20K–25K at sale",
+    desc:"First project outside football — a travel-focused Instagram page.", status:"Historical Project",
+    experience:"ExploreGlam was my first experience outside the football niche. Managing a travel-focused page allowed me to apply my social media experience to a completely different audience and content category.",
+    responsibilities:["Content selection","Editing","Publishing","Captions","Audience engagement","Content monitoring"],
+    resultDetail:"Approximately 20K–25K followers at sale.",
+    note:"This page is no longer publicly accessible — historical project.", live:null, icon:"plane",
+    image:"images/sold.png",
+    proof:["images/sold.png","images/sold.png","images/sold.png"] },
+  { id:"hitmotivated", platform:"instagram", platformLabel:"Instagram", niche:"Boxing", name:"HitMotivated", result:"7.6K+ current",
+    desc:"A boxing-focused Instagram page, demonstrating experience beyond football.", status:"Current Project",
+    experience:"HitMotivated represents my experience working with a boxing-focused audience and demonstrates that my social media experience extends beyond football.",
+    responsibilities:["Content management","Content selection","Editing","Publishing","Audience engagement","Content monitoring"],
+    resultDetail:"7.6K+ current followers.",
+    note:"Current follower count reflects the page's overall growth, not solely my individual contribution.",
+    live:"https://www.instagram.com/hitmotivated/", icon:"instagram",
+    image:"images/ig.png",
+    proof:["images/ig insight.png","images/ig insight.png","images/ig insight 2.png"] },
+  { id:"themadridbeat", platform:"facebook", platformLabel:"Facebook", niche:"Football", name:"The Madrid Beat", result:"~2.4K current",
+    desc:"A part-time Facebook project — regular content activity and day-to-day publishing.", status:"Current Project",
+    experience:"I currently manage The Madrid Beat as a part-time Facebook project. My work includes maintaining regular content activity and handling the day-to-day publishing and content operations.",
+    responsibilities:["Content publishing","Editing","Captions","Hashtags","Audience engagement","Page management","Content monitoring"],
+    resultDetail:"~2.4K current followers.", note:null, live:"#", icon:"facebook",
+    image:"images/facebook.png",
+    proof:["images/facebook insight.png","images/facebook insight 1.png","images/facebook insight 2.png"] },
+  { id:"madridistabrief", platform:"youtube", platformLabel:"YouTube", niche:"Football", name:"MadridistaBrief", result:"~2.65K subscribers",
+    desc:"A football-focused YouTube channel built around short-form content.", status:"Current Project",
+    experience:"I currently manage MadridistaBrief as a football-focused YouTube project. My work includes handling short-form content and the regular publishing process for the channel.",
+    responsibilities:["Short-form content","Video editing","Publishing","Titles","Descriptions","Channel management","Content monitoring"],
+    resultDetail:"~2.65K current subscribers.", note:null, live:"#", icon:"youtube",
+    image:"images/youtube.png",
+    proof:["images/yt.png","images/yt1.png","images/yt2.png"] }
+];
+
+/* ---------------- RENDER CARDS ---------------- */
+const workGrid = document.getElementById('workGrid');
+function renderCards(list){
+  workGrid.innerHTML = list.map(p => `
+    <div class="card reveal in" data-platform="${p.platform}">
+      <div class="card-media">
+        <div class="stamp">${p.status}</div>
+        <img src="${p.image}" alt="${p.name} screenshot" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-tag">${p.platformLabel} · ${p.niche}</span>
+        <div class="card-title">${p.name}</div>
+        <div class="card-result">${p.result}</div>
+        <p class="card-desc">${p.desc}</p>
+        <div class="card-footer">
+          <button class="view-case" data-id="${p.id}">VIEW CASE STUDY ${ICONS.arrow}</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+renderCards(PROJECTS);
+
+/* ---------------- FILTERS ---------------- */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    renderCards(f === 'all' ? PROJECTS : PROJECTS.filter(p=>p.platform===f));
+  });
+});
+
+/* ---------------- MODAL ---------------- */
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalInner = document.getElementById('modalInner');
+let lastFocused = null;
+
+function openModal(project){
+  const liveHtml = project.live
+    ? `<a href="${project.live}" target="_blank" rel="noopener" class="modal-live">VIEW LIVE PROFILE ${ICONS.external}</a>`
+    : `<span class="modal-note">Not publicly accessible — historical project.</span>`;
+
+  modalInner.innerHTML = `
+    <div class="modal-media">
+      <div class="modal-shot" data-lightbox-src="${project.image}" data-lightbox-alt="${project.name} screenshot">
+        <img src="${project.image}" alt="${project.name} screenshot">
+      </div>
+      <span class="modal-status">${project.status}</span>
+      ${liveHtml}
+      <div class="modal-section" style="margin-bottom:0; width:100%;">
+        <h5>Proof of Work</h5>
+        <div class="proof-grid">
+          <div class="proof-thumb" data-lightbox-src="${project.proof[0]}" data-lightbox-alt="${project.name} proof 1"><img src="${project.proof[0]}" alt=""></div>
+          <div class="proof-thumb" data-lightbox-src="${project.proof[1]}" data-lightbox-alt="${project.name} proof 2"><img src="${project.proof[1]}" alt=""></div>
+          <div class="proof-thumb" data-lightbox-src="${project.proof[2]}" data-lightbox-alt="${project.name} proof 3"><img src="${project.proof[2]}" alt=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-info">
+      <span class="card-tag">${project.platformLabel} · ${project.niche}</span>
+      <h3 id="modalTitle">${project.name}</h3>
+      <div class="modal-result">${project.result}</div>
+      <div class="modal-section"><h5>My Experience</h5><p>${project.experience}</p></div>
+      <div class="modal-section"><h5>Responsibilities</h5><ul>${project.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+      <div class="modal-section"><h5>Result</h5><p>${project.resultDetail}</p>${project.note ? `<p class="modal-note">${project.note}</p>` : ''}</div>
+    </div>
+  `;
+  modalBackdrop.classList.add('open');
+  lastFocused = document.activeElement;
+  document.getElementById('modalCloseBtn').focus();
+  document.body.style.overflow = 'hidden';
+  modalInner.querySelectorAll('[data-lightbox-src]').forEach(el=>{
+    el.addEventListener('click', ()=> openLightbox(el.dataset.lightboxSrc, el.dataset.lightboxAlt));
+  });
+}
+function closeModal(){
+  modalBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  if(lastFocused) lastFocused.focus();
+}
+// ONLY the view-case button opens the modal
+workGrid.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.view-case');
+  if(!btn) return;
+  const project = PROJECTS.find(p=>p.id === btn.dataset.id);
+  if(project) openModal(project);
+});
+document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeModal(); });
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape'){
+    if(lightbox.classList.contains('open')) closeLightbox();
+    else if(modalBackdrop.classList.contains('open')) closeModal();
+  }
+});
+
+/* ---------------- LIGHTBOX ---------------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxInner = document.getElementById('lightboxInner');
+function openLightbox(src, alt){
+  lightboxInner.innerHTML = `<img src="${src}" alt="${alt}">`;
+  lightbox.classList.add('open');
+}
+function closeLightbox(){ lightbox.classList.remove('open'); }
+document.getElementById('lightboxCloseBtn').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) closeLightbox(); });
+
+/* ---------------- MOBILE MENU ---------------- */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', ()=>{
+  mobileMenu.classList.add('open');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+});
+document.getElementById('mmCloseBtn').addEventListener('click', ()=>{
+  mobileMenu.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+  mobileMenu.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+}));
+
+/* ---------------- RESUME BUTTONS ---------------- */
+['resumeBtnHero','resumeBtnContact'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el){
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      alert('Add your resume PDF and link it here (e.g. href="resume.pdf" download).');
+    });
+  }
+});
+
+/* ---------------- SCROLL REVEAL ---------------- */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
